@@ -1,0 +1,105 @@
+{% extends 'pacjenci/main.html' %}
+{% block content %}
+
+
+
+<br>
+
+<div class="row">
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="liczba-pacjentow">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Asystent</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<p>{{asystent.imie_i_nazwisko}}</p>
+					<p>{{asystent.dom}}</p>
+					<a class="btn btn-outline-light  btn-sm btn-block"
+					   href="{% url 'aktualizuj_asystenta' asystent.id%}">Edytuj dane</a>
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="liczba-zgloszen">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Liczba pacjentów</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{liczba_pacjentow}}</h3>
+					<a class="btn btn-outline-light btn-small btn-block" href="{% url 'pacjenci_asystent' %}">Podgląd</a>
+
+			  	</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="col">
+		<div class="col-md">
+			<div class="card text-center text-white  mb-3" id="liczba-zgloszen2">
+			  	<div class="card-header">
+			  		<h5 class="card-title">Liczba zgłoszeń</h5>
+			  	</div>
+			  	<div class="card-body">
+			    	<h3 class="card-title">{{liczba_zgloszen}}</h3>
+					<a class="btn btn-outline-light btn-small btn-block" href="{% url 'dodaj_zgloszenie' %}">Dodaj zgłoszenie</a>
+			  	</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<br>
+
+<br>
+
+
+
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<h5>Zgłoszenia</h5><hr>
+			<form method="get">
+				{{myFilterZgloszenie.form}}
+		    <button class="btn btn-primary" type="submit">Szukaj</button>
+		  </form>
+		</div>
+	</div>
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+                <tr>
+                    <th>Pacjent</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+					{% for i in zgloszenia %}
+						<tr>
+							<td>{{i.pacjent}}</td>
+							<td>{{i.data_dodania}}</td>
+                            <td>{{i.status}}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'aktualizuj_zgloszenie' i.id%}">
+                                Aktualizuj</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'usun_zgloszenie' i.id%}">
+                                Usuń</a></td>
+						</tr>
+					{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock content %}

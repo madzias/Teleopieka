@@ -1,0 +1,58 @@
+{% extends 'pacjenci/main.html' %}
+
+{% block content %}
+
+{% include 'pacjenci/status.html' %}
+<br>
+
+<div class="row">
+    <div class="col-md-5">
+        <h5 class="text-center">ASYSTENCI</h5>
+        <hr>
+        <div class="card card-body">
+            <table class="table table-sm">
+                <tr>
+                    <th>Asystent</th>
+                    <th>Dom sąsiedzki</th>
+                    <th></th>
+                </tr>
+					{% for i in asystenci %}
+						<tr>
+							<td>{{i.imie_i_nazwisko}}</td>
+							<td>{{i.dom}}</td>
+                            <td><a href="{% url 'asystenci' i.id %}">Podgląd</a></td>
+						</tr>
+					{% endfor %}
+            </table>
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <h5 class="text-center">OSTATNIE ZGŁOSZENIA</h5>
+        <hr>
+        <div class="card card-body">
+            <a class="btn btn-primary btn-small btn-block" href="{% url 'dodaj_zgloszenie' %}">Dodaj zgłoszenie</a>
+            <table class="table table-sm">
+                <tr>
+                    <th>Pacjent</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                    {% for i in zgloszenia %}
+						<tr>
+							<td>{{i.pacjent}}</td>
+							<td>{{i.data_dodania}}</td>
+                            <td>{{i.status}}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'aktualizuj_zgloszenie' i.id%}">
+                                Aktualizuj</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'usun_zgloszenie' i.id%}">
+                                Usuń</a></td>
+						</tr>
+					{% endfor %}
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

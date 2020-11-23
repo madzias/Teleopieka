@@ -1,0 +1,16 @@
+{% extends 'pacjenci/main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<br>
+<p>Czy jesteś pewien/pewna, że chcesz usunąć tego pacjenta?</p>
+
+<form action="{% url 'usun_pacjenta' pacjent.id %}" method="POST">
+    {% csrf_token %}
+
+    <a href="{% url 'home' %}">Anuluj</a>
+    <input type="submit" value="Usuń">
+</form>
+
+{% endblock %}

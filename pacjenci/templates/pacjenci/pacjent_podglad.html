@@ -1,0 +1,73 @@
+{%  extends 'pacjenci/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Pacjent</h5>
+			<hr>
+			<p>{{pacjent.imie_i_nazwisko}}</p>
+            <a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'aktualizuj_pacjenta' pacjent.id%}">Aktualizuj</a>
+            <a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'usun_pacjenta' pacjent.id%}">Usuń</a>
+		</div>
+	</div>
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>STATUS</h5>
+			<hr>
+			<p>{{pacjent.status}}</p>
+		</div>
+	</div>
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Informacje</h5>
+			<hr>
+			<p>Data dołączenia: {{pacjent.data_dodania}}</p>
+			<p>Telefon: {{pacjent.telefon}}</p>
+			<p>Nr IMEI: {{pacjent.nr_IMEI}}</p>
+		</div>
+	</div>
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Dom sąsiedzki</h5>
+			<hr>
+			<p>{{pacjent.dom}}</p>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Zgłoszenia</h5>
+			<table class="table table-sm">
+                <tr>
+                    <th>Data</th>
+                    <th>Rodzaj</th>
+					<th>Status</th>
+					<th>Opis</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+				{% for i in zgloszenia %}
+						<tr>
+							<td>{{i.data_dodania}}</td>
+							<td>{{i.rodzaj}}</td>
+                            <td>{{i.status}}</td>
+							<td>{{i.opis}}</td>
+							<td><a class="btn btn-sm btn-info" href="{% url 'aktualizuj_zgloszenie' i.id%}">
+                                Aktualizuj</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'usun_zgloszenie' i.id%}">
+                                Usuń</a></td>
+						</tr>
+				{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

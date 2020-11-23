@@ -1,0 +1,28 @@
+{% extends 'pacjenci/main.html' %}
+{% load static %}
+{% block content %}
+
+<br>
+<br>
+
+    <h6 class="text-center">Czy jesteś pewien/pewna, że chcesz usunąć to zgłoszenie?</h6>
+<br>
+    <form action="{% url 'usun_zgloszenie' zgloszenie.id %}" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-5" align="right">
+
+            </div>
+            <div class="col-1" align="center">
+                <a class="btn btn-outline-primary" href="{% url 'home' %}">Anuluj</a>
+            </div>
+            <div class="col-1" align="center">
+                <input class="btn btn-danger" type="submit" value="Zapisz">
+            </div>
+            <div class="col-5">
+
+            </div>
+        </div>
+    </form>
+
+{% endblock %}

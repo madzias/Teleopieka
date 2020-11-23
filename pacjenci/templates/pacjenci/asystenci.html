@@ -1,0 +1,121 @@
+{%  extends 'pacjenci/main.html' %}
+
+{% block content %}
+
+<br>
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Asystent</h5>
+			<hr>
+			<p>{{asystent.imie_i_nazwisko}}</p>
+			<a class="btn btn-outline-info  btn-sm btn-block" href="">Przycisk</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Przycisk</a>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Informacje kontaktowe</h5>
+			<hr>
+			<p>Email: {{asystent.email}}</p>
+			<p>Telefon: {{asystent.telefon}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Pacjenci pod opieką</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{liczba_pacjentow}}</h1>
+		</div>
+	</div>
+</div>
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<h5>Pacjenci</h5><hr>
+			<form method="get">
+				{{myFilterPacjent.form}}
+		    <button class="btn btn-primary" type="submit">Szukaj</button>
+		  </form>
+		</div>
+	</div>
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Imię i nazwisko</th>
+					<th>Nr IMEI</th>
+					<th>Status</th>
+					<th></th>
+					<th></th>
+				</tr>
+				{% for pacjent in pacjenci %}
+						<tr>
+							<td>{{pacjent.imie_i_nazwisko}}</td>
+							<td>{{pacjent.nr_IMEI}}</td>
+							<td>{{pacjent.status}}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'aktualizuj_pacjenta' pacjent.id%}">
+                                Aktualizuj</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'usun_pacjenta' pacjent.id%}">
+                                Usuń</a></td>
+						</tr>
+				{% endfor %}
+
+
+			</table>
+		</div>
+	</div>
+</div>
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+			<h5>Zgłoszenia</h5><hr>
+			<form method="get">
+				{{myFilterZgloszenie.form}}
+		    <button class="btn btn-primary" type="submit">Szukaj</button>
+		  </form>
+		</div>
+	</div>
+
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+                <tr>
+                    <th>Pacjent</th>
+                    <th>Data</th>
+                    <th>Status</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+					{% for i in zgloszenia %}
+						<tr>
+							<td>{{i.pacjent}}</td>
+							<td>{{i.data_dodania}}</td>
+                            <td>{{i.status}}</td>
+                            <td><a class="btn btn-sm btn-info" href="{% url 'aktualizuj_zgloszenie' i.id%}">
+                                Aktualizuj</a></td>
+                            <td><a class="btn btn-sm btn-danger" href="{% url 'usun_zgloszenie' i.id%}">
+                                Usuń</a></td>
+						</tr>
+					{% endfor %}
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,39 @@
+{%  extends 'pacjenci/main.html' %}
+
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Pacjenci</h5>
+					<form method="get">
+						{{myFilterPacjent.form}}
+					<button class="btn btn-primary" type="submit">Szukaj</button>
+				    </form>
+                </div>
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Pacjent</th>
+							<th>Nr IMEI</th>
+                            <th>Status</th>
+							<th></th>
+						</tr>
+						{% for i in pacjenci %}
+							<tr>
+								<td>{{i.imie_i_nazwisko}}</td>
+								<td>{{i.nr_IMEI}}</td>
+                                <td>{{i.status}}</td>
+								<td><a href="{% url 'pacjent_podglad' i.id %}">Podgląd</a></td>
+							</tr>
+						{% endfor %}
+
+					</table>
+				</div>
+			</div>
+
+		</div>
+
+{% endblock content %}
