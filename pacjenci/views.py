@@ -58,7 +58,7 @@ def logoutUser(request):
 @login_required(login_url='login')
 @admin_only
 def home(request):
-    asystenci = Asystent.objects.all()
+    asystenci = Asystent.objects.exclude(dom=None)
     liczba_asystentow = asystenci.count()
 
     pacjenci = Pacjent.objects.all()
@@ -189,7 +189,6 @@ def aktualizujZgloszenie(request, pk):
     form = DodajZgloszenie(instance=zgloszenie)
 
     if request.method == 'POST':
-        #print('Printing POST: ', request.POST)
         form = DodajZgloszenie(request.POST, instance=zgloszenie)
         if form.is_valid():
             form.save()
@@ -214,7 +213,6 @@ def aktualizujPacjenta(request, pk):
     form = DodajPacjenta(instance=pacjent)
 
     if request.method == 'POST':
-        #print('Printing POST: ', request.POST)
         form = DodajPacjenta(request.POST, instance=pacjent)
         if form.is_valid():
             form.save()
@@ -246,3 +244,27 @@ def aktualizujAsystenta(request, pk):
 
     context = {'form': form}
     return render(request, 'pacjenci/dodaj_asystenta.html', context)
+
+@login_required(login_url='login')
+def aktualizujAsystenta_admin(request, pk):
+    asystent = Asystent.objects.get(id=pk)
+    form = DodajAsystenta(instance=asystent)
+
+    if request.method == 'POST':
+        form = DodajAsystenta(request.POST, instance=asystent)
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+
+    context = {'form': form}
+    return render(request, 'pacjenci/dodaj_asystenta.html', context)
+
+@login_required(login_url='login')
+def usunAsystenta(request, pk):
+    asystent = Asystent.objects.get(id=pk)
+    if request.method == 'POST':
+        asystent.delete()
+        return redirect('/')
+
+    context = {'asystent': asystent}
+    return render(request, 'pacjenci/usun_asystenta.html', context)

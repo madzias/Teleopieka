@@ -8,16 +8,16 @@
 <br>
 <br>
 
-    <h6 class="text-center">Czy jesteś pewien/pewna, że chcesz usunąć tego pacjenta?</h6>
+    <h6 class="text-center">Czy jesteś pewien/pewna, że chcesz usunąć tego asystenta?</h6>
 <br>
-    <form action="{% url 'usun_pacjenta' pacjent.id %}" method="POST">
+    <form action="{% url 'usun_asystenta' asystent.id %}" method="POST">
         {% csrf_token %}
         <div class="row">
             <div class="col-5" align="right">
 
             </div>
             <div class="col-1" align="center">
-                <a class="btn btn-outline-primary" href="{% url 'pacjent_podglad' pacjent.id %}">Anuluj</a>
+                <a class="btn btn-outline-primary" href="{% url 'asystenci' asystent.id %}">Anuluj</a>
             </div>
             <div class="col-1" align="center">
                 <input class="btn btn-danger" type="submit" value="Usuń">

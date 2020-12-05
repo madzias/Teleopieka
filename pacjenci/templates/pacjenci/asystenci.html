@@ -9,8 +9,10 @@
 			<h5>Asystent</h5>
 			<hr>
 			<p>{{asystent.imie_i_nazwisko}}</p>
-			<a class="btn btn-outline-info  btn-sm btn-block" href="">Przycisk</a>
-			<a class="btn btn-outline-danger  btn-sm btn-block" href="">Przycisk</a>
+			<a class="btn btn-outline-info btn-sm btn-block"
+			   href="{% url 'aktualizuj_asystenta_admin' asystent.id%}">Edytuj
+				dane</a>
+			<a class="btn btn-outline-danger  btn-sm btn-block" href="{% url 'usun_asystenta' asystent.id%}">Usuń</a>
 		</div>
 	</div>
 

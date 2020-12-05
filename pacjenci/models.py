@@ -62,7 +62,6 @@ class Zgloszenie(models.Model):
     )
     status = models.CharField(max_length=200, null=True, choices=STATUS)
     rodzaj = models.CharField(max_length=200, null=True, choices=RODZAJ)
-    #asystent = models.ForeignKey(Asystent, null=True, on_delete=models.SET_NULL)
     pacjent = models.ForeignKey(Pacjent, null=True, on_delete=models.SET_NULL)
     opis = models.CharField(max_length=500, null=True)
     data_dodania = models.DateTimeField(auto_now_add=True, null=True)

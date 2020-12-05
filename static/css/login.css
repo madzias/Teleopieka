@@ -12,7 +12,7 @@
 		}
 		.user_card {
 			width: 350px;
-            height: 50%;
+            height: 80%;
             overflow: auto;
             margin: auto;
             position: absolute;
@@ -31,7 +31,7 @@
 
 		.user_card2 {
 			width: 350px;
-            height: 60%;
+            height: 80%;
             overflow: auto;
             margin: auto;
             position: absolute;
@@ -42,6 +42,25 @@
 			justify-content: center;
 			flex-direction: column;
 			padding: 10px;
+			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+			border-radius: 5px;
+		}
+
+		.user_card3 {
+			width: 500px;
+            height: 80%;
+            overflow: auto;
+            margin: auto;
+            position: absolute;
+            top: 0; left: 0; bottom: 0; right: 0;
+			background: #ffffff;
+			position: absolute;
+			display: flex;
+			justify-content: center;
+			flex-direction: column;
+			padding: 30px;
 			box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 			-moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);

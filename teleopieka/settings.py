@@ -106,9 +106,11 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-en'
+LANGUAGE_CODE = 'pl-pl'
 
 TIME_ZONE = 'UTC'
+
+DATE_INPUT_FORMATS = ['%d-%m-%Y']
 
 USE_I18N = True
 
@@ -125,5 +127,13 @@ STATIC_URL = '/static/'
 MEDIA_URL = '/images/'
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, '/static/')
+    os.path.join(BASE_DIR, 'static')
 ]
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'madzia.utest@gmail.com'
+EMAIL_HOST_PASSWORD = 'teleopieka'

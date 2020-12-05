@@ -83,6 +83,7 @@
                     <th>Pacjent</th>
                     <th>Data</th>
                     <th>Status</th>
+					<th>Rodzaj</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -91,6 +92,7 @@
 							<td>{{i.pacjent}}</td>
 							<td>{{i.data_dodania}}</td>
                             <td>{{i.status}}</td>
+							<td>{{i.rodzaj}}</td>
                             <td><a class="btn btn-sm btn-info" href="{% url 'aktualizuj_zgloszenie' i.id%}">
                                 Aktualizuj</a></td>
                             <td><a class="btn btn-sm btn-danger" href="{% url 'usun_zgloszenie' i.id%}">
